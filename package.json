@@ -1,0 +1,32 @@
+{
+	"name": "ideal-shell",
+	"version": "0.1.0",
+	"description": "A mock-up demo of the Ideal UX system shell.",
+	"main": "index.js",
+	"dependencies": {
+		"@material/mwc-button": "^0.18.0",
+		"@material/mwc-icon": "^0.18.0",
+		"@material/mwc-icon-button": "^0.18.0",
+		"@material/mwc-list": "^0.18.0",
+		"@mdi/js": "^5.5.55",
+		"@webcomponents/webcomponentsjs": "^2.4.4",
+		"lit-element": "^2.4.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/zmyaro/ideal-shell.git"
+	},
+	"author": {
+		"name": "Zachary Yaro",
+		"email": "zmyaro@zmyaro.com",
+		"url": "https://zmyaro.com"
+	},
+	"bugs": {
+		"url": "https://github.com/zmyaro/ideal-shell/issues"
+	},
+	"homepage": "https://github.com/zmyaro/ideal-shell#readme"
+}

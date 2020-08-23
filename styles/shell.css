@@ -1,0 +1,40 @@
+
+body {
+	/* Default FlashOS background image :) */
+	background: linear-gradient(120deg, #01243A, #015287 25%, #014776 40%, #015287 60%, #000000);
+	background-attachment: fixed;
+	
+	font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
+}
+
+ideal-system-bar {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+	ideal-system-bar mwc-icon-button {
+		margin: -4px -2px;
+	}
+	ideal-system-bar mwc-button {
+		--mdc-theme-primary: currentColor;
+	}
+
+	ideal-system-bar[mobile] #system-back-button {
+		margin-right: auto;
+	}
+	ideal-system-bar[mobile] #system-launcher-button {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+ideal-system-icon-area {
+	margin-left: auto;
+	margin-right: 2px;
+	
+	--mdc-icon-size: 16px;
+}
