@@ -10,6 +10,10 @@ function init() {
 	checkMobileWidth();
 	window.addEventListener('resize', checkMobileWidth);
 	
+	// TODO: Remove this when the app launcher is implemented.
+	var twitterWindow = document.createElement('ideal-window');
+	twitterWindow.src = 'https://twitter.com';
+	document.body.appendChild(twitterWindow);
 }
 
 function checkMobileWidth() {
