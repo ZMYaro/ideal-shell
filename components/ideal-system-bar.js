@@ -8,7 +8,7 @@ import '/components/ideal-launcher-pane.js';
 import '/components/ideal-system-pane.js';
 
 export class IdealSystemBar extends ShadowlessLitElement {
-
+	
 	static get properties() {
 		return {
 			gesture: { type: Boolean, reflect: true },
@@ -16,7 +16,15 @@ export class IdealSystemBar extends ShadowlessLitElement {
 			platform: { type: String, reflect: true }
 		};
 	}
-
+	
+	openLauncherPane() {
+		this.querySelector('ideal-launcher-pane').open = true;
+	}
+	
+	openSystemPane() {
+		this.querySelector('ideal-system-pane').open = true;
+	}
+	
 	render() {
 		let launcherIcon =
 			this.gesture ? mdiChevronUp :
@@ -26,10 +34,10 @@ export class IdealSystemBar extends ShadowlessLitElement {
 		
 		return html`
 			${this.gesture ? '' : html`<mwc-icon-button icon="arrow_back" id="system-back-button"></mwc-icon-button>`}
-			<mwc-icon-button label="Launcher" id="system-launcher-button">
+			<mwc-icon-button label="Launcher" id="system-launcher-button" @click="${this.openLauncherPane}">
 				  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="${launcherIcon}" /></svg>
 			</mwc-icon-button>
-			<ideal-system-icon-area ?gesture="${this.gesture}"></ideal-system-icon-area>
+			<ideal-system-icon-area ?gesture="${this.gesture}" @click="${this.openSystemPane}"></ideal-system-icon-area>
 			<ideal-launcher-pane></ideal-launcher-pane>
 			<ideal-system-pane></ideal-system-pane>
 		`;

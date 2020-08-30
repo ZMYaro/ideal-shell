@@ -37,4 +37,94 @@ ideal-system-icon-area {
 	margin-right: 2px;
 	
 	--mdc-icon-size: 16px;
+	
+	z-index: 998;
+}
+
+ideal-launcher-pane,
+ideal-system-pane {
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 320px;
+	height: 512px;
+	max-height: 100%;
+	
+	border-radius: 4px 4px 0 0;
+	
+	transform: translateY(512px);
+	opacity: 0;
+	transition-property: transform, opacity;
+	transition-duration: 0.25s;
+	
+	outline: 0 none;
+	z-index: 999;
+}
+	ideal-launcher-pane[open],
+	ideal-system-pane[open] {
+		transform: none;
+		opacity: 1;
+	}
+	ideal-launcher-pane h1,
+	ideal-system-pane h1 {
+		font-size: 1.25rem;
+		font-weight: 500;
+	}
+	ideal-launcher-pane ideal-app-tile {
+		transform: translateY(4em) scale(0.85);
+		transition-property: transform;
+		transition-duration: 0.4s;
+	}
+		ideal-launcher-pane[open] ideal-app-tile {
+			transform: none;
+		}
+
+ideal-launcher-pane {
+	display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: nowrap;
+	
+	overflow-x: scroll;
+	scroll-snap-type: x mandatory;
+	scroll-snap-stop: always;
+}
+
+ideal-launcher-pin-screen,
+ideal-all-apps-menu {
+	box-sizing: border-box;
+	flex: 0 0 100%;
+	height: calc(100% - 48px);
+	overflow-y: auto;
+	padding: 0 0.5rem;
+	scroll-snap-align: start;
+}
+	ideal-launcher-pin-screen {
+		padding-right: 0;
+	}
+	ideal-all-apps-menu {
+		flex-basis: calc(100% - 48px);
+	}
+		ideal-all-apps-menu mwc-list {
+			margin: 0 -0.5rem;
+		}
+	ideal-launcher-pin-screen::-webkit-scrollbar,
+	ideal-all-apps-menu::-webkit-scrollbar {
+		width: 4px;
+	}
+	ideal-launcher-pin-screen::-webkit-scrollbar-track,
+	ideal-all-apps-menu::-webkit-scrollbar-track {
+		background: rgba(255, 255, 255, 0);
+	}
+	ideal-launcher-pin-screen::-webkit-scrollbar-thumb,
+	ideal-all-apps-menu::-webkit-scrollbar-thumb {
+		background: rgba(128, 128, 128, 0.5);
+	}
+	ideal-launcher-pin-screen::-webkit-scrollbar-button,
+	ideal-all-apps-menu::-webkit-scrollbar-button {
+		display: none;
+	}
+
+ideal-window {
+	z-index: -1;
 }
