@@ -11,9 +11,9 @@ function init() {
 	window.addEventListener('resize', checkMobileWidth);
 	
 	// TODO: Remove this when the app launcher is implemented.
-	var twitterWindow = document.createElement('ideal-window');
-	twitterWindow.src = 'https://twitter.com';
-	document.body.appendChild(twitterWindow);
+	var testWindow = document.createElement('ideal-window');
+	testWindow.src = 'https://paintz.app';
+	document.body.appendChild(testWindow);
 }
 
 function checkMobileWidth() {
