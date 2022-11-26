@@ -3,7 +3,7 @@ import 'https://unpkg.com/@material/mwc-list@canary/mwc-list.js?module';
 import 'https://unpkg.com/@material/mwc-list@canary/mwc-list-item.js?module';
 
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import {APPS, APP_ICON_DIR} from '/scripts/app-list.js';
+import {APPS, APP_ICON_DIR} from '/scripts/app_list.js';
 
 export class IdealAllAppsMenu extends ShadowlessLitElement {
 	
@@ -13,10 +13,10 @@ export class IdealAllAppsMenu extends ShadowlessLitElement {
 	}
 	
 	render() {
-		let appListItems = APPS.map(app => html`
+		let appListItems = Object.keys(APPS).map(id => html`
 			<mwc-list-item graphic="icon">
-				<img slot="graphic" src="${APP_ICON_DIR}${app.id}.png" alt="" />
-				${app.name}
+				<img slot="graphic" src="${APP_ICON_DIR}${id}.png" alt="" />
+				${APPS[id].name}
 			</mwc-list-item>
 		`);
 		

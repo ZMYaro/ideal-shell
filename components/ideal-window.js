@@ -72,7 +72,7 @@ export class IdealWindow extends LitElement {
 		
 		// Set default values.
 		this.x = 32;
-		this.y = 32;
+		this.y = 64;
 		this.width = 512;
 		this.height = 512;
 		this.color = '#808080';

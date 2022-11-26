@@ -7,14 +7,13 @@ export class IdealSystemUI extends ShadowlessLitElement {
 
 	static get properties() {
 		return {
-			gesture: { type: Boolean, reflect: true },
-			mobile: { type: Boolean, reflect: true }
+			gesture: { type: Boolean, reflect: true }
 		};
 	}
 
 	render() {
 		return html`
-			<ideal-system-bar ?gesture="${this.gesture}" ?mobile="${this.mobile}"></ideal-system-bar>
+			<ideal-system-bar ?gesture="${this.gesture}"></ideal-system-bar>
 		`;
 	}
 }

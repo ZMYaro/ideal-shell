@@ -13,15 +13,14 @@ export class IdealAppTile extends LitElement {
 				border-radius: 4px;
 				user-select: none;
 				overflow: hidden;
-				outline: 0 none;
 				cursor: pointer;
 				
-				--tile-size: 48px;
-				width: var(--tile-size);
-				height: var(--tile-size);
+				width: var(--app-tile-size-medium);
+				height: var(--app-tile-size-medium);
 			}
-				:host([size="medium"]) {
-					--tile-size: 100px;
+				:host([size="small"]) {
+					width: var(--app-tile-size-small);
+					height: var(--app-tile-size-small);
 				}
 				:host(:hover),
 				:host(:focus) {
@@ -39,25 +38,29 @@ export class IdealAppTile extends LitElement {
 				width: 100%;
 				height: 100%;
 			}
+				.icon-fg {
+					top: -4px;
+				}
 			.title {
 				position: absolute;
 				left: 0;
 				right: 0;
-				bottom: 2px;
+				bottom: 0;
+				padding: 2px;
 				font-size: 0.75rem;
 				text-align: center;
 				white-space: nowrap;
 				color: white;
-				text-shadow: 0 1px 16px rgba(0, 0, 0, 0.75);
+				background-color: rgba(0, 0, 0, 0.25);
 			}
 				:host([size="small"]) .title {
-					display: none;
+					//display: none;
+					font-size: 0.5rem;
+					padding: 1px;
 				}
-				:host([text-color="dark"]) .title {
-					color: black;
-				}
+				:host([text-color="dark"]) .title,
 				:host([text-color="mixed"]) .title {
-					text-shadow: 0 1px 8px #000;
+					background-color: rgba(0, 0, 0, 0.4);
 				}
 		`;
 	}
