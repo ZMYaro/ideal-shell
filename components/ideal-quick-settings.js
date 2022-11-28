@@ -1,14 +1,19 @@
 import {LitElement, html, css} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
 
+import {cardCSS} from '/scripts/shared_css_snippets.js';
 import '/components/ideal-qs-tile.js';
 
 export class IdealQuickSettings extends LitElement {
 	
 	static get styles() {
 		return css`
-			.tiles {
-				margin: 4px;
+			:host {
+				${cardCSS}
 				
+				display: flex;
+				flex-direction: column;
+			}
+			.tiles {
 				display: grid;
 				grid-template-columns: repeat(4, 1fr);
 				gap: 4px;
@@ -19,6 +24,7 @@ export class IdealQuickSettings extends LitElement {
 	render() {
 		return html`
 			<!-- TODO: <ideal-qs-slider></ideal-qs-slider> -->
+			<div>[brightness slider will go here]</div>
 			<div class="tiles">
 				<ideal-qs-tile icon="signal_wifi_4_bar" submenu checked>Wi-fi</ideal-qs-tile>
 				<ideal-qs-tile icon="bluetooth" submenu checked>Bluetooth</ideal-qs-tile>

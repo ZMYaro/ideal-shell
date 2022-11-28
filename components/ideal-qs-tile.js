@@ -13,6 +13,7 @@ export class IdealQSTile extends LitElement {
 				border-radius: var(--corner-radius-tile);
 				user-select: none;
 				cursor: pointer;
+				overflow: hidden;
 				
 				background-color: var(--color-bg-tile);
 				color: var(--color-on-bg);

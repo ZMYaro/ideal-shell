@@ -1,8 +1,7 @@
 import {html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
 
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/ideal-launcher-pins.js';
-import '/components/ideal-all-apps-menu.js';
+import '/components/ideal-launcher-apps.js';
 
 export class IdealLauncherPane extends ShadowlessLitElement {
 	
@@ -26,15 +25,14 @@ export class IdealLauncherPane extends ShadowlessLitElement {
 	
 	attributeChangedCallback(name, oldVal, newVal) {
 		if (name === 'open' && newVal !== undefined &&  newVal !== null) {
-			this.scrollLeft = window.innerWidth; // Start scrolled to the first page of apps.
-			this.focus();
+			// Start scrolled to the first page of apps.
+			this.querySelector('ideal-launcher-apps').scrollLeft = window.innerWidth;
 		}
 	}
 	
 	render() {
 		return html`
-			<ideal-all-apps-menu></ideal-all-apps-menu>
-			<ideal-launcher-pins></ideal-launcher-pins>
+			<ideal-launcher-apps></ideal-launcher-apps>
 		`;
 	}
 }

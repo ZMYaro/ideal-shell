@@ -30,6 +30,15 @@ export class IdealAppTile extends LitElement {
 				:host(.active) {
 					filter: brightness(0.9);
 				}
+			
+				ideal-launcher-pane :host {
+					transform: translateY(-4em) scale(0.85);
+					transition: transform 0.4s;
+				}
+					ideal-launcher-pane[open] :host {
+						transform: none;
+					}
+			
 			.icon-bg,
 			.icon-fg {
 				position: absolute;
