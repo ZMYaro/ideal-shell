@@ -1,9 +1,36 @@
-html {
+:root {
+	--corner-radius-panel: 10px;
+	--corner-radius-card: 8px;
+	--corner-radius-tile: 6px;
+	
+	--color-bg-panel: rgba(255, 255, 255, 0.8);
+	--color-bg-card: white;
+	--color-bg-tile: rgba(0, 0, 0, 0.1);
+	--color-on-bg: black;
+	--color-on-accent: white;
+	--color-accent: #6699ff;
+	
 	--system-bar-height-large: 40px;
 	--system-bar-height-small: 24px;
 	--app-tile-size-small: 48px;
 	--app-tile-size-medium: 100px;
 	--app-tile-gap: 4px;
+	--qs-tile-height: 72px;
+	
+	--mdc-shape-small: var(--corner-radius-tile);
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-accent: #6699ff;
+		--color-bg-card: white;
+		--color-bg-panel: rgba(0, 0, 0, 0.8);
+		--color-bg-tile: rgba(255, 255, 255, 0.2);
+		--color-on-bg: white;
+		--color-on-accent: black;
+		
+		--mdc-theme-text-primary-on-background: rgba(255, 255, 255, 0.87);
+		--mdc-ripple-color: #fff;
+	}
 }
 
 body {
@@ -55,16 +82,16 @@ ideal-system-icon-area {
 }
 
 ideal-launcher-pane,
-ideal-system-pane {
+ideal-action-pane {
 	display: block;
 	position: fixed;
-	left: 0;
 	top: var(--system-bar-height-small);
 	width: 100%;
 	height: 512px;
 	max-height: 100%;
 	
-	border-radius: 0 0 4px 4px;
+	border-radius: 0 0 var(--corner-radius-panel) var(--corner-radius-panel);
+	background-color: var(--background-color-panel);
 	
 	transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height-small)));
 	opacity: 0;
@@ -75,18 +102,18 @@ ideal-system-pane {
 	z-index: -1;
 }
 	ideal-launcher-pane[open],
-	ideal-system-pane[open] {
+	ideal-action-pane[open] {
 		transform: none;
 		opacity: 1;
 	}
 	ideal-launcher-pane h1,
-	ideal-system-pane h1 {
+	ideal-action-pane h1 {
 		font-size: 1.25rem;
 		font-weight: 500;
 	}
 @media (min-width: 600px) {
 	ideal-launcher-pane,
-	ideal-system-pane {
+	ideal-action-pane {
 		width: auto;
 		top: var(--system-bar-height-large);
 		transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height-large)));
@@ -94,6 +121,8 @@ ideal-system-pane {
 }
 
 ideal-launcher-pane {
+	left: 0;
+	
 	display: flex;
 	flex-wrap: nowrap;
 	
@@ -146,11 +175,24 @@ ideal-all-apps-menu {
 		display: none;
 	}
 @media (min-width: 600px) {
+	ideal-launcher-pane {
+		left: 4px;
+	}
 	ideal-all-apps-menu {
 		width: 300px;
 	}
 	ideal-launcher-pins {
 		width: calc(6 * var(--app-tile-size-small) + 5 * var(--app-tile-gap));
+	}
+}
+
+ideal-action-pane {
+	right: 0;
+}
+@media (min-width: 600px) {
+	ideal-action-pane {
+		right: 4px;
+		width: 356px;
 	}
 }
 

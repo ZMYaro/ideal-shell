@@ -5,7 +5,7 @@ import {mdiApps, mdiChevronDown, mdiCircleSlice8, mdiMicrosoftWindows} from 'htt
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
 import '/components/ideal-system-icon-area.js';
 import '/components/ideal-launcher-pane.js';
-import '/components/ideal-system-pane.js';
+import '/components/ideal-action-pane.js';
 
 export class IdealSystemBar extends ShadowlessLitElement {
 	
@@ -21,7 +21,7 @@ export class IdealSystemBar extends ShadowlessLitElement {
 	}
 	
 	openSystemPane() {
-		this.querySelector('ideal-system-pane').open = true;
+		this.querySelector('ideal-action-pane').open = true;
 	}
 	
 	render() {
@@ -37,7 +37,7 @@ export class IdealSystemBar extends ShadowlessLitElement {
 			</mwc-icon-button>
 			<ideal-system-icon-area ?gesture="${this.gesture}" @click="${this.openSystemPane}"></ideal-system-icon-area>
 			<ideal-launcher-pane></ideal-launcher-pane>
-			<ideal-system-pane></ideal-system-pane>
+			<ideal-action-pane></ideal-action-pane>
 		`;
 	}
 }

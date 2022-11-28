@@ -10,7 +10,7 @@ export class IdealAppTile extends LitElement {
 				display: inline-block;
 				position: relative;
 				text-align: center;
-				border-radius: 4px;
+				border-radius: var(--corner-radius-tile);
 				user-select: none;
 				overflow: hidden;
 				cursor: pointer;

@@ -15,9 +15,6 @@ export class IdealLauncherPane extends ShadowlessLitElement {
 	constructor() {
 		super();
 		
-		// Make menu container focusable.
-		this.tabIndex = -1;
-		
 		// Close on click outside.
 		this.addEventListener('pointerdown', (ev) => {
 			ev.stopPropagation();
