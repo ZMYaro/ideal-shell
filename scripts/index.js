@@ -11,9 +11,9 @@ function init() {
 	window.addEventListener('resize', checkMobileWidth);
 	
 	// TODO: Remove this when the app launcher is implemented.
-	var testWindow = document.createElement('ideal-window');
-	testWindow.src = 'https://paintz.app';
-	document.body.appendChild(testWindow);
+	//var testWindow = document.createElement('ideal-window');
+	//testWindow.src = 'https://example.com';
+	//document.body.appendChild(testWindow);
 }
 
 function checkMobileWidth() {
