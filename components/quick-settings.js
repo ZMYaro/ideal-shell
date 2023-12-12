@@ -9,6 +9,7 @@ export class IdealQuickSettings extends LitElement {
 		return css`
 			:host {
 				${cardCSS}
+				margin-block-start: 0;
 				
 				display: flex;
 				flex-direction: column;
