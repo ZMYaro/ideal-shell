@@ -80,7 +80,7 @@ ideal-system-icon-area {
 	margin-left: auto;
 	margin-right: 2px;
 	
-	--mdc-icon-size: 16px;
+	--mdc-icon-size: 1rem;
 	
 	z-index: 1;
 }

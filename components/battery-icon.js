@@ -1,0 +1,65 @@
+import {LitElement, css, html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import 'https://unpkg.com/@material/mwc-icon@canary/mwc-icon.js?module';
+
+export class IdealBatteryIcon extends LitElement {
+	
+	static get styles() {
+		return css`
+			:host {
+				display: inline-flex;
+				align-items: center;
+			}
+		`;
+	}
+	
+	static get properties() {
+		return {
+			showpercentage: { type: Boolean, reflect: true },
+			batteryManagerAvailable: { type: Boolean, attribute: false },
+			batteryCharging: { type: Boolean, attribute: false },
+			batteryLevel: { type: Number, attribute: false }
+		};
+	}
+
+	constructor() {
+		super();
+		this.setUpBatteryManager();
+	}
+	
+	async setUpBatteryManager() {
+		if (!navigator.getBattery) { return; }
+		
+		let battery = await navigator.getBattery(),
+			boundUpdateBattery = this.updateBattery.bind(this);
+		
+		this.batteryManagerAvailable = true;
+		this.updateBattery({ target: battery });
+		battery.addEventListener('chargingchange', boundUpdateBattery);
+		battery.addEventListener('levelchange', boundUpdateBattery);
+	}
+
+	updateBattery(ev) {
+		this.batteryCharging = ev.target.charging;
+		this.batteryLevel = ev.target.level;
+	}
+
+	render() {
+		let batteryPercentage = Math.round(this.batteryLevel * 100) + '%',
+			batteryIcon = 'battery_unknown';
+		
+		if (this.batteryManagerAvailable) {
+			if (this.batteryCharging) {
+				batteryIcon = 'battery_charging_full';
+			} else {
+				batteryIcon = 'battery_std';
+			}
+		}
+		
+		return html`
+			<mwc-icon title="${this.showpercentage ? '' : batteryPercentage}">${batteryIcon}</mwc-icon>
+			${this.showpercentage ? batteryPercentage : ''}
+		`;
+	}
+}
+
+window.customElements.define('ideal-battery-icon', IdealBatteryIcon);
