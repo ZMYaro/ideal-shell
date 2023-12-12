@@ -3,6 +3,8 @@
 	--corner-radius-card: 8px;
 	--corner-radius-tile: 6px;
 	
+	--padding-card: 8px;
+	
 	--color-bg-panel: rgba(255, 255, 255, 0.8);
 	--color-bg-card: white;
 	--color-bg-tile: rgba(0, 0, 0, 0.1);
