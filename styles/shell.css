@@ -3,9 +3,10 @@
 	--corner-radius-card: 8px;
 	--corner-radius-tile: 6px;
 	
+	--padding-panel: 4px;
 	--padding-card: 8px;
 	
-	--color-bg-panel: rgba(255, 255, 255, 0.8);
+	--color-bg-panel: rgba(255, 255, 255, 0.75);
 	--color-bg-card: white;
 	--color-bg-tile: rgba(0, 0, 0, 0.1);
 	--color-on-bg: black;
@@ -25,7 +26,7 @@
 	:root {
 		--color-accent: #6699ff;
 		--color-bg-card: #1d1d1d;
-		--color-bg-panel: rgba(0, 0, 0, 0.8);
+		--color-bg-panel: rgba(0, 0, 0, 0.75);
 		--color-bg-tile: rgba(255, 255, 255, 0.2);
 		--color-on-bg: white;
 		--color-on-accent: black;
@@ -41,6 +42,14 @@ body {
 	background-attachment: fixed;
 	
 	font-family: Roboto, Helvetica, 'Segoe UI', Arial, sans-serif;
+}
+
+ideal-system-bar,
+ideal-launcher-pane,
+ideal-action-pane {
+	background-color: var(--color-bg-panel);
+	box-shadow: rgba(0, 0, 0, 0.26) 0 2px 5px 0, rgba(0, 0, 0, 0.16) 0 2px 10px 0;
+	color: var(--color-on-bg);
 }
 
 ideal-system-bar {
@@ -94,7 +103,6 @@ ideal-action-pane {
 	max-height: 100%;
 	
 	border-radius: 0 0 var(--corner-radius-panel) var(--corner-radius-panel);
-	background-color: var(--background-color-panel);
 	
 	transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height-small)));
 	opacity: 0;

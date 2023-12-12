@@ -8,6 +8,6 @@ export var panelCSS = css`
 export var cardCSS = css`
 	background-color: var(--color-bg-card);
 	border-radius: var(--corner-radius-card);
-	margin: 4px;
+	margin: var(--padding-panel);
 	padding: var(--padding-card);
 `;
