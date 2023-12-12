@@ -23,7 +23,9 @@ export class IdealLauncherApps extends LitElement {
 			
 			h1 {
 				font-size: 1em;
-				padding: 0 8px;
+				margin: 0;
+				padding: 1em;
+				padding-block-end: 0;
 			}
 			
 			ideal-launcher-pins,
@@ -38,11 +40,14 @@ export class IdealLauncherApps extends LitElement {
 					padding-right: 0;
 				}
 				ideal-all-apps-menu {
+					margin: calc(-1 * var(--padding-card));
+					margin-inline-end: 0;
 					width: calc(100% - 48px);
 				}
 					ideal-all-apps-menu mwc-list-item {
 						height: 48px;
 						--mdc-list-item-graphic-size: 32px;
+						--mdc-list-item-graphic-margin: 16px;
 					}
 				
 				:host::-webkit-scrollbar,
