@@ -29,8 +29,10 @@ export class IdealBatteryIcon extends LitElement {
 	async setUpBatteryManager() {
 		if (!navigator.getBattery) { return; }
 		
-		let battery = await navigator.getBattery(),
-			boundUpdateBattery = this.updateBattery.bind(this);
+		let battery = await navigator.getBattery();
+		if (!battery) { return; }
+		
+		let boundUpdateBattery = this.updateBattery.bind(this);
 		
 		this.batteryManagerAvailable = true;
 		this.updateBattery({ target: battery });
@@ -44,10 +46,12 @@ export class IdealBatteryIcon extends LitElement {
 	}
 
 	render() {
-		let batteryPercentage = Math.round(this.batteryLevel * 100) + '%',
+		let batteryPercentage = 'Can\'t read battery',
 			batteryIcon = 'battery_unknown';
 		
 		if (this.batteryManagerAvailable) {
+			batteryPercentage = Math.round(this.batteryLevel * 100) + '%';
+			
 			if (this.batteryCharging) {
 				batteryIcon = 'battery_charging_full';
 			} else {
