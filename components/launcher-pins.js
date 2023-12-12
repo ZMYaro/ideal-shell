@@ -2,7 +2,7 @@ import {html, css} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?modu
 
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
 import {APPS, APP_ICON_DIR} from '/scripts/app_list.js';
-import '/components/ideal-app-tile.js';
+import '/components/app-tile.js';
 
 export class IdealLauncherPins extends ShadowlessLitElement {
 

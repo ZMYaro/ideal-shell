@@ -1,5 +1,5 @@
-import '/components/ideal-system-ui.js';
-import '/components/ideal-window.js';
+import '/components/system-ui.js';
+import '/components/window.js';
 
 let systemUI;
 window.addEventListener('load', init);

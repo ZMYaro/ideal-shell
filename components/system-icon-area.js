@@ -78,7 +78,8 @@ export class IdealSystemIconArea extends ShadowlessLitElement {
 
 		let batteryIcon = !this.batteryManagerAvailable ? 'battery_unknown' :
 				this.batteryCharging ? 'battery_charging_full' :
-				'battery_std';
+				'battery_std',
+			batteryPercentage = Math.round(this.batteryLevel * 100) + '%';
 		
 		return html`
 			<mwc-button>
@@ -87,7 +88,7 @@ export class IdealSystemIconArea extends ShadowlessLitElement {
 				<mwc-icon>email</mwc-icon>
 				&nbsp;&middot;&nbsp;-->
 				<mwc-icon>${networkIcon}</mwc-icon>
-				<mwc-icon>${batteryIcon}</mwc-icon>
+				<mwc-icon title="${batteryPercentage || ''}">${batteryIcon}</mwc-icon>
 				${this.time}
 			</mwc-button>
 		`;

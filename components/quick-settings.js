@@ -1,7 +1,7 @@
 import {LitElement, html, css} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
 
 import {cardCSS} from '/scripts/shared_css_snippets.js';
-import '/components/ideal-qs-tile.js';
+import '/components/qs-tile.js';
 
 export class IdealQuickSettings extends LitElement {
 	

@@ -3,9 +3,9 @@ import 'https://unpkg.com/@material/mwc-icon-button@canary/mwc-icon-button.js?mo
 import {mdiApps, mdiChevronDown, mdiCircleSlice8, mdiMicrosoftWindows} from 'https://unpkg.com/@mdi/js/mdi.js?module';
 
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/ideal-system-icon-area.js';
-import '/components/ideal-launcher-pane.js';
-import '/components/ideal-action-pane.js';
+import '/components/system-icon-area.js';
+import '/components/launcher-pane.js';
+import '/components/action-pane.js';
 
 export class IdealSystemBar extends ShadowlessLitElement {
 	

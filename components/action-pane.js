@@ -1,9 +1,9 @@
 import {html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
 
 import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/ideal-launcher-apps.js';
+import '/components/quick-settings.js';
 
-export class IdealLauncherPane extends ShadowlessLitElement {
+export class IdealActionPane extends ShadowlessLitElement {
 	
 	static get properties() {
 		return {
@@ -23,18 +23,11 @@ export class IdealLauncherPane extends ShadowlessLitElement {
 		});
 	}
 	
-	attributeChangedCallback(name, oldVal, newVal) {
-		if (name === 'open' && newVal !== undefined &&  newVal !== null) {
-			// Start scrolled to the first page of apps.
-			this.querySelector('ideal-launcher-apps').scrollLeft = window.innerWidth;
-		}
-	}
-	
 	render() {
 		return html`
-			<ideal-launcher-apps></ideal-launcher-apps>
+			<ideal-quick-settings></ideal-quick-settings>
 		`;
 	}
 }
 
-window.customElements.define('ideal-launcher-pane', IdealLauncherPane);
+window.customElements.define('ideal-action-pane', IdealActionPane);

@@ -2,8 +2,8 @@ import {LitElement, html, css} from 'https://unpkg.com/lit-element@2.4.0/lit-ele
 
 import {narrowWindowThreshold, cardCSS} from '/scripts/shared_css_snippets.js';
 
-import '/components/ideal-launcher-pins.js';
-import '/components/ideal-all-apps-menu.js';
+import '/components/launcher-pins.js';
+import '/components/all-apps-menu.js';
 
 export class IdealLauncherApps extends LitElement {
 	
