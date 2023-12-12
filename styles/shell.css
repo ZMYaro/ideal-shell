@@ -22,7 +22,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--color-accent: #6699ff;
-		--color-bg-card: white;
+		--color-bg-card: #1d1d1d;
 		--color-bg-panel: rgba(0, 0, 0, 0.8);
 		--color-bg-tile: rgba(255, 255, 255, 0.2);
 		--color-on-bg: white;
