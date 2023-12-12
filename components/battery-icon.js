@@ -55,7 +55,10 @@ export class IdealBatteryIcon extends LitElement {
 			if (this.batteryCharging) {
 				batteryIcon = 'battery_charging_full';
 			} else {
-				batteryIcon = 'battery_std';
+				// Convert the battery level to one of the icons in eighths.
+				let batteryEighths = Math.round(this.batteryLevel / 0.125),
+					iconSuffix = batteryEighths < 7 ? `${batteryEighths}_bar` : 'full';
+				batteryIcon = `battery_${iconSuffix}`;
 			}
 		}
 		
