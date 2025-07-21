@@ -1,4 +1,4 @@
-import {LitElement, html, css, unsafeCSS} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { LitElement, html, css, unsafeCSS } from 'lit';
 
 export class IdealAppTile extends LitElement {
 	

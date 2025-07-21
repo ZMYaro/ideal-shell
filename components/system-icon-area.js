@@ -1,10 +1,10 @@
-import {html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { html } from 'lit';
 import 'https://unpkg.com/@material/mwc-button@canary/mwc-button.js?module';
 //import 'https://unpkg.com/@material/mwc-icon@canary/mwc-icon.js?module';
 
-import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/battery-icon.js';
-import '/components/clock.js';
+import { ShadowlessLitElement } from '/scripts/shadowless_lit_element.js';
+import './battery-icon.js';
+import './clock.js';
 
 export class IdealSystemIconArea extends ShadowlessLitElement {
 	

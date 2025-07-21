@@ -1,4 +1,4 @@
-import {LitElement, css, html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { LitElement, html, css } from 'lit';
 import 'https://unpkg.com/@material/mwc-icon@canary/mwc-icon.js?module';
 
 export class IdealClock extends LitElement {

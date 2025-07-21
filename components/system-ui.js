@@ -1,7 +1,7 @@
-import {html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { html } from 'lit';
 
-import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/system-bar.js';
+import { ShadowlessLitElement } from '/scripts/shadowless_lit_element.js';
+import './system-bar.js';
 
 export class IdealSystemUI extends ShadowlessLitElement {
 

@@ -1,11 +1,11 @@
-import {html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { html } from 'lit';
 import 'https://unpkg.com/@material/mwc-icon-button@canary/mwc-icon-button.js?module';
-import {mdiApps, mdiChevronDown, mdiCircleSlice8, mdiMicrosoftWindows} from 'https://unpkg.com/@mdi/js/mdi.js?module';
+import { mdiApps, mdiChevronDown, mdiCircleSlice8, mdiMicrosoftWindows } from 'https://unpkg.com/@mdi/js/mdi.js?module';
 
-import {ShadowlessLitElement} from '/scripts/shadowless-lit-element.js';
-import '/components/system-icon-area.js';
-import '/components/launcher-pane.js';
-import '/components/action-pane.js';
+import { ShadowlessLitElement } from '/scripts/shadowless_lit_element.js';
+import './system-icon-area.js';
+import './launcher-pane.js';
+import './action-pane.js';
 
 export class IdealSystemBar extends ShadowlessLitElement {
 	

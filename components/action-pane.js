@@ -1,7 +1,7 @@
-import {LitElement, css, html} from 'https://unpkg.com/lit-element@2.4.0/lit-element.js?module';
+import { LitElement, css, html } from 'lit';
 
-import '/components/battery-icon.js';
-import '/components/quick-settings.js';
+import './battery-icon.js';
+import './quick-settings.js';
 
 export class IdealActionPane extends LitElement {
 	
