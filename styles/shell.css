@@ -15,12 +15,19 @@
 	
 	--system-bar-height-large: 40px;
 	--system-bar-height-small: 24px;
+	--system-bar-height: var(--system-bar-height-small);
 	--app-tile-size-small: 48px;
 	--app-tile-size-medium: 100px;
 	--app-tile-gap: 4px;
 	--qs-tile-height: 72px;
+	--window-title-bar-height: 40px;
+	--window-grabbable-border-width: 8px;
 	
 	--mdc-shape-small: var(--corner-radius-tile);
+	
+	--z-system-bar: 2;
+	--z-system-panes: 1;
+	--z-fullscreen-window: 3;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -57,13 +64,13 @@ ideal-system-bar {
 	left: 0;
 	right: 0;
 	top: 0;
-	height: var(--system-bar-height-small);
+	height: var(--system-bar-height);
 	
 	display: flex;
 	align-items: center;
 	overflow: hidden;
 	
-	z-index: 999;
+	z-index: var(--z-system-bar);
 }
 	ideal-system-bar mwc-icon-button {
 		margin: -4px -2px;
@@ -76,8 +83,8 @@ ideal-system-bar {
 		--mdc-theme-primary: currentColor;
 	}
 @media (min-width: 600px) {
-	ideal-system-bar {
-		height: var(--system-bar-height-large);
+	:root {
+		--system-bar-height: var(--system-bar-height-large);
 	}
 	ideal-system-bar mwc-icon-button:first-child {
 		margin-left: -2px;
@@ -98,19 +105,19 @@ ideal-launcher-pane,
 ideal-action-pane {
 	display: block;
 	position: fixed;
-	top: var(--system-bar-height-small);
+	top: var(--system-bar-height);
 	width: 100%;
 	max-height: 100%;
 	
 	border-radius: 0 0 var(--corner-radius-panel) var(--corner-radius-panel);
 	
-	transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height-small)));
+	transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height)));
 	opacity: 0;
 	transition-property: transform, opacity;
 	transition-duration: 0.25s;
 	
 	outline: 0 none;
-	z-index: -1;
+	z-index: var(--z-system-panes);
 }
 	ideal-launcher-pane[open],
 	ideal-action-pane[open] {
@@ -126,8 +133,6 @@ ideal-action-pane {
 	ideal-launcher-pane,
 	ideal-action-pane {
 		width: auto;
-		top: var(--system-bar-height-large);
-		transform: translateY(-100%) translateY(calc(-1 * var(--system-bar-height-large)));
 	}
 }
 
@@ -163,3 +168,6 @@ ideal-action-pane {
 ideal-window {
 	z-index: -1;
 }
+	ideal-window[fullscreen] {
+		z-index: var(--z-fullscreen-window);
+	}
