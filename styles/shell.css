@@ -20,6 +20,7 @@
 	--app-tile-size-medium: 100px;
 	--app-tile-gap: 4px;
 	--qs-tile-height: 72px;
+	--snap-zone-size: 64px;
 	--window-title-bar-height: 40px;
 	--window-grabbable-border-width: 8px;
 	
@@ -165,9 +166,6 @@ ideal-action-pane {
 	}
 }
 
-ideal-window {
-	z-index: -1;
+ideal-window[fullscreen] {
+	z-index: var(--z-fullscreen-window);
 }
-	ideal-window[fullscreen] {
-		z-index: var(--z-fullscreen-window);
-	}

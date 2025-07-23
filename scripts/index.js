@@ -1,5 +1,4 @@
 import '/components/system-ui.js';
-import '/components/window.js';
 
 let systemUI;
 window.addEventListener('load', init);
@@ -7,13 +6,8 @@ window.addEventListener('load', init);
 function init() {
 	systemUI = document.getElementsByTagName('ideal-system-ui')[0];
 
-	checkMobileWidth();
 	window.addEventListener('resize', checkMobileWidth);
-	
-	// TODO: Remove this when the app launcher is implemented.
-	var testWindow = document.createElement('ideal-window');
-	testWindow.src = 'https://example.com';
-	document.body.appendChild(testWindow);
+	checkMobileWidth();
 }
 
 function checkMobileWidth() {

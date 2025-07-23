@@ -6,7 +6,7 @@ export class IdealWindow extends LitElement {
 		return css`
 			:host {
 				display: block;
-				position: fixed;
+				position: absolute;
 				
 				/* Mirror to custom properties since CSS can't pull from custom attributes. */
 				left: var(--x);
@@ -16,10 +16,8 @@ export class IdealWindow extends LitElement {
 			}
 				:host([maximized]),
 				:host([fullscreen]) {
-					left: 0;
+					inset: 0;
 					top: var(--system-bar-height);
-					right: 0;
-					bottom: 0;
 					width: auto;
 					height: auto;
 				}
@@ -36,10 +34,10 @@ export class IdealWindow extends LitElement {
 				height: var(--window-title-bar-height);
 				
 				background-color: var(--color);
+				
+				touch-action: none;
+				user-select: none;
 			}
-				:host(.dragging) .title-bar {
-					cursor: move;
-				}
 			
 			.contents {
 				position: absolute;
@@ -109,22 +107,10 @@ export class IdealWindow extends LitElement {
 					border-top-left-radius: var(--window-grabbable-border-width);
 				}
 			
-			.drag-cover {
-				display: none;
-				position: absolute;
-				left: 0;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				
-				cursor: move;
-				
-				/* Translucent color overlay. */
-				background-color: oklch(from var(--color) 0.25 calc(0.5 * c) h / 0.25);
+			:host(.dragging) {
+				pointer-events: none;
+				opacity: 0.85;
 			}
-				:host(.dragging) .drag-cover {
-					display: block;
-				}
 		`;
 	}
 	
@@ -146,26 +132,32 @@ export class IdealWindow extends LitElement {
 		super();
 		
 		// Set default values.
-		this.x = 32;
-		this.y = 64;
-		this.innerWidth = 512;
-		this.innerHeight = 512;
-		this.color = '#808080';
+		this.x = this.x || 32;
+		this.y = this.y || 64;
+		this.innerWidth = this.innerWidth || 512;
+		this.innerHeight = this.innerHeight || 512;
+		this.color = this.color || '#808080';
 		this.maximized = false;
 		this.fullscreen = false;
-		this.drag = undefined;
 	}
 	
-	handleAppNavigate(ev) {
-		// TODO
-		console.log('Window navigated:');
-		console.log(ev);
-	}
-	
-	handleDrag(ev) {
+	_handleAppNavigate(ev) {
 		// TODO
 	}
 	
+	/**
+	 * @private
+	 * Inform the window manager the user has started dragging the window and pass along the pointer event details.
+	 * @param {PointerEvent} ev
+	 */
+	_handleDragStart(ev) {
+		ev.direction = 'move';
+		this.dispatchEvent(new PointerEvent('windowdragstart', ev));
+	}
+	
+	/**
+	 * @override
+	 */
 	render() {
 		// Mirror to custom properties since CSS can't pull from custom attributes.
 		this.style.setProperty('--color', this.color);
@@ -173,11 +165,10 @@ export class IdealWindow extends LitElement {
 		this.style.setProperty('--y', `${this.y}px`);
 		this.style.setProperty('--inner-width', `${this.innerWidth}px`);
 		this.style.setProperty('--inner-height', `${this.innerHeight}px`);
-		this.classList.toggle('dragging', !!this.drag);
 		
 		return html`
-			<iframe src="${this.src}" class="contents" @load="${this.handleAppNavigate}"></iframe>
-			<div class="title-bar"></div>
+			<iframe src="${this.src}" class="contents" @load="${this._handleAppNavigate}"></iframe>
+			<div class="title-bar" @pointerdown="${this._handleDragStart}"></div>
 			<div class="resizer resizer-n"></div>
 			<div class="resizer resizer-n resizer-e"></div>
 			<div class="resizer resizer-e"></div>
