@@ -26,9 +26,9 @@
 	
 	--mdc-shape-small: var(--corner-radius-tile);
 	
-	--z-system-bar: 2;
-	--z-system-panes: 1;
-	--z-fullscreen-window: 3;
+	--z-system-bar: 1001;
+	--z-system-panes: 1000;
+	--z-fullscreen-window: 1002;
 }
 @media (prefers-color-scheme: dark) {
 	:root {

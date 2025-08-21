@@ -41,13 +41,18 @@ export class IdealWindowManager extends LitElement {
 		`;
 	}
 	
+	/** {Object} */
 	drag;
+	/** @private {Array<IdealWindow>} */
+	_windowList
+	
 	_boundDragStartHandler;
 	_boundDragMoveHandler;
 	_boundDragEndHandler;
 	
 	constructor() {
 		super();
+		this._windowList = [];
 		this._boundDragStartHandler = this._handleDragStart.bind(this);
 		this._boundDragMoveHandler = this._handleDragMove.bind(this);
 		this._boundDragEndHandler = this._handleDragEnd.bind(this);
@@ -80,14 +85,41 @@ export class IdealWindowManager extends LitElement {
 	}
 	
 	/**
-	 * 
+	 * Open a new window.
+	 * @param {String} url - The URL of the web app to open in the window
+	 * @param {String} color - CSS primary color for the app
 	 */
 	openWindow(url, color) {
 		let newWindow = document.createElement('ideal-window');
 		newWindow.src = url;
 		newWindow.color = color;
 		newWindow.addEventListener('windowdragstart', this._boundDragStartHandler);
+		this._windowList.push(newWindow);
 		this.appendChild(newWindow);
+		this._recalculateZIndeces();
+	}
+	
+	/**
+	 * @private
+	 * Move a window to the end of the window list and visually in front of the others
+	 * @param {IdealWindow} win - The window to bring to the front
+	 */
+	_bringWindowToFront(win) {
+		const winIndex = this._windowList.indexOf(win);
+		if (winIndex === -1) { return; }
+		this._windowList.splice(winIndex, 1);
+		this._windowList.push(win);
+		this._recalculateZIndeces();
+	}
+	
+	/**
+	 * @private
+	 * Recalculate the z-indeces of all the windows based on their order in the window list
+	 */
+	_recalculateZIndeces() {
+		this._windowList.forEach((win, i) => {
+			win.style.zIndex = i;
+		});
 	}
 	
 	/**
@@ -120,8 +152,7 @@ export class IdealWindowManager extends LitElement {
 		}
 		
 		// Move the window to the top.
-		// TODO: This currently reloads the iframe in most browsers even though the spec says it shouldn't.
-		this.appendChild(ev.currentTarget);
+		this._bringWindowToFront(ev.currentTarget);
 		
 		ev.currentTarget.classList.add('dragging');
 		this.classList.add('dragging');
