@@ -20,9 +20,11 @@
 	--app-tile-size-medium: 100px;
 	--app-tile-gap: 4px;
 	--qs-tile-height: 72px;
-	--snap-zone-size: 64px;
+	--snap-zone-size: 48px;
 	--window-title-bar-height: 40px;
 	--window-grabbable-border-width: 8px;
+	
+	--ui-transition-duration: 0.2s;
 	
 	--mdc-shape-small: var(--corner-radius-tile);
 	

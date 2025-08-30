@@ -109,7 +109,6 @@ export class IdealWindow extends LitElement {
 			
 			:host(.dragging) {
 				pointer-events: none;
-				opacity: 0.85;
 			}
 		`;
 	}
