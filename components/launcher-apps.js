@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-import { narrowWindowThreshold, cardCSS } from '/scripts/shared_css_snippets.js';
+import { narrowWindowThresholdCSS, cardCSS } from '/scripts/shared_css_snippets.js';
 
 import './launcher-pins.js';
 import './all-apps-menu.js';
@@ -68,7 +68,7 @@ export class IdealLauncherApps extends LitElement {
 					display: none;
 				}
 			
-			@media (min-width: ${narrowWindowThreshold}) {
+			@media (min-width: ${narrowWindowThresholdCSS}) {
 				:host {
 					max-height: min(512px, 75vh);
 				}

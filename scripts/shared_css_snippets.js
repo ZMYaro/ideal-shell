@@ -1,11 +1,13 @@
 import { css } from 'lit';
 
-export var narrowWindowThreshold = css`600px`;
+export const NARROW_WINDOW_THRESHOLD = 600;
 
-export var panelCSS = css`
+export const narrowWindowThresholdCSS = css`${NARROW_WINDOW_THRESHOLD}px`;
+
+export const panelCSS = css`
 `; // TODO
 
-export var cardCSS = css`
+export const cardCSS = css`
 	background-color: var(--color-bg-card);
 	border-radius: var(--corner-radius-card);
 	margin: var(--padding-panel);
