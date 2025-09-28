@@ -42,6 +42,12 @@ export class IdealWindow extends LitElement {
 				touch-action: none;
 				user-select: none;
 			}
+				.app-icon {
+					box-sizing: border-box;
+					width: var(--window-title-bar-height);
+					height: var(--window-title-bar-height);
+					padding: calc(1.5 * var(--padding-panel));
+				}
 			
 			.contents {
 				position: absolute;
@@ -124,7 +130,10 @@ export class IdealWindow extends LitElement {
 			y: { type: Number, reflect: true },
 			innerWidth: { type: Number, reflect: true },
 			innerHeight: { type: Number, reflect: true },
-			windowTitle: { type: String, reflect: true },
+			defaultTitle: { type: String, reflect: true },
+			currentTitle: { type: String, reflect: true },
+			defaultIcon: { type: String, reflect: true },
+			currentIcon: { type: String, reflect: true },
 			color: { type: String, reflect: true },
 			maximized: { type: Boolean, reflect: true },
 			fullscreen: { type: Boolean, reflect: true },
@@ -184,8 +193,8 @@ export class IdealWindow extends LitElement {
 			<div class="drag-cover"></div>
 			<iframe src="${this.src}" class="contents" @load="${this._handleAppNavigate}"></iframe>
 			<div class="title-bar" @pointerdown="${this._handleDragStart}">
-				<div style="width: var(--window-title-bar-height); height: var(--window-title-bar-height);"><!-- App icon placeholder --></div>
-				${this.windowTitle}
+				<img class="app-icon" src="${this.currentIcon ?? this.defaultIcon}" alt="" />
+				${this.currentTitle ?? this.defaultTitle}
 			</div>
 		`;
 	}
