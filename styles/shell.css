@@ -46,6 +46,16 @@
 	}
 }
 
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
 body {
 	/* Default FlashOS background image :) */
 	background: linear-gradient(120deg, #01243A, #015287 25%, #014776 40%, #015287 60%, #000000);

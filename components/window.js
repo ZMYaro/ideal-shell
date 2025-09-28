@@ -150,6 +150,8 @@ export class IdealWindow extends LitElement {
 	 * @param {PointerEvent} ev
 	 */
 	_handleDragStart(ev) {
+		// Allow the dragging pointer to trigger further pointer events.
+		ev.target.releasePointerCapture(ev.pointerId);
 		ev.direction = 'move';
 		this.dispatchEvent(new PointerEvent('windowdragstart', ev));
 	}
