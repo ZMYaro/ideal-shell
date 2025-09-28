@@ -13,6 +13,7 @@ export class IdealWindow extends LitElement {
 				top: var(--y);
 				width: var(--inner-width);
 				height: calc(var(--inner-height) + var(--window-title-bar-height));
+				background-color: var(--color);
 			}
 				:host([maximized]),
 				:host([fullscreen]) {
@@ -33,7 +34,10 @@ export class IdealWindow extends LitElement {
 				bottom: 0;
 				height: var(--window-title-bar-height);
 				
-				background-color: var(--color);
+				display: flex;
+				align-items: center;
+				gap: var(--padding-panel);
+				color: white;
 				
 				touch-action: none;
 				user-select: none;
@@ -120,6 +124,7 @@ export class IdealWindow extends LitElement {
 			y: { type: Number, reflect: true },
 			innerWidth: { type: Number, reflect: true },
 			innerHeight: { type: Number, reflect: true },
+			windowTitle: { type: String, reflect: true },
 			color: { type: String, reflect: true },
 			maximized: { type: Boolean, reflect: true },
 			fullscreen: { type: Boolean, reflect: true },
@@ -168,8 +173,6 @@ export class IdealWindow extends LitElement {
 		this.style.setProperty('--inner-height', `${this.innerHeight}px`);
 		
 		return html`
-			<iframe src="${this.src}" class="contents" @load="${this._handleAppNavigate}"></iframe>
-			<div class="title-bar" @pointerdown="${this._handleDragStart}"></div>
 			<div class="resizer resizer-n"></div>
 			<div class="resizer resizer-n resizer-e"></div>
 			<div class="resizer resizer-e"></div>
@@ -179,6 +182,11 @@ export class IdealWindow extends LitElement {
 			<div class="resizer resizer-w"></div>
 			<div class="resizer resizer-n resizer-w"></div>
 			<div class="drag-cover"></div>
+			<iframe src="${this.src}" class="contents" @load="${this._handleAppNavigate}"></iframe>
+			<div class="title-bar" @pointerdown="${this._handleDragStart}">
+				<div style="width: var(--window-title-bar-height); height: var(--window-title-bar-height);"><!-- App icon placeholder --></div>
+				${this.windowTitle}
+			</div>
 		`;
 	}
 }

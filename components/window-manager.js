@@ -152,8 +152,8 @@ export class IdealWindowManager extends LitElement {
 		this.addEventListener('pointerout', this._boundDragEndHandler);
 		
 		// TODO: Remove this when the app launcher is implemented.
-		this.openWindow('https://example.com', '#808080');
-		this.openWindow('https://paintz.app', '#3f51b5');
+		this.openWindow('https://example.com', 'Example', '#808080');
+		this.openWindow('https://paintz.app', 'PaintZ', '#3f51b5');
 	}
 	
 	/**
@@ -177,11 +177,13 @@ export class IdealWindowManager extends LitElement {
 	/**
 	 * Open a new window.
 	 * @param {String} url - The URL of the web app to open in the window
+	 * @param {String} defaultTitle - The default title of the app
 	 * @param {String} color - CSS primary color for the app
 	 */
-	openWindow(url, color) {
+	openWindow(url, defaultTitle, color) {
 		let newWindow = document.createElement('ideal-window');
 		newWindow.src = url;
+		newWindow.windowTitle = defaultTitle;
 		newWindow.color = color;
 		newWindow.addEventListener('pointerdown', this._boundBringToFront);
 		newWindow.addEventListener('windowdragstart', this._boundDragStartHandler);
